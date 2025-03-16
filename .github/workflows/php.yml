@@ -1,0 +1,35 @@
+<?php
+session_start();
+$filename = "peserta.json";
+$peserta = file_exists($filename) ? json_decode(file_get_contents($filename), true) : [];
+
+if ($_GET['action'] == "getPeserta") {
+    echo json_encode($peserta);
+}
+
+if ($_GET['action'] == "getJuzTerpakai") {
+    $juzTerpakai = array_map(fn($p) => $p['juz'], $peserta);
+    echo json_encode($juzTerpakai);
+}
+
+if ($_GET['action'] == "daftarHadir") {
+    $nama = $_POST['nama'];
+    $nomorWa = $_POST['nomorWa'];
+    $juz = $_POST['juz'];
+
+    if (in_array($juz, array_map(fn($p) => $p['juz'], $peserta))) {
+        echo json_encode(["error" => "Juz sudah diambil!"]);
+        exit;
+    }
+
+    $peserta[] = ["nama" => $nama, "nomorWa" => $nomorWa, "juz" => $juz];
+    file_put_contents($filename, json_encode($peserta));
+
+    echo json_encode(["success" => true]);
+}
+
+if ($_GET['action'] == "resetPeserta" && $_POST['password'] == "taqri123") {
+    file_put_contents($filename, json_encode([]));
+    echo json_encode(["success" => true]);
+}
+?>
