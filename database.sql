@@ -1,0 +1,11 @@
+CREATE DATABASE taqri_db;
+
+USE taqri_db;
+
+CREATE TABLE peserta (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    nomor_wa VARCHAR(15) UNIQUE NOT NULL,
+    juz INT NOT NULL,
+    waktu_daftar TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+}
+
+.container {
+    background: white;
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.judul {
+    font-size: 24px;
+    animation: fadein 2s infinite alternate;
+}
+
+.moderator, .narasumber {
+    color: orange;
+    font-weight: bold;
+}
+
+.nama {
+    font-size: 20px;
+    color: black;
+}
+
+.btn {
+    background: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-small {
+    font-size: 12px;
+    padding: 5px;
+}
+
+@keyframes fadein {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
